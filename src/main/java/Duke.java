@@ -15,7 +15,7 @@ public class Duke {
         System.out.println("____________________________________________________________");
     }
 
-    public static void main(String[] args) throws unknownCommandException,emptyInputException{
+    public static void main(String[] args) throws UnknownCommandException,EmptyInputException{
         printIntro();
         Scanner in = new Scanner(System.in);
         Task[] list = new Task[100];
@@ -42,7 +42,7 @@ public class Duke {
                 } else if (line.startsWith("todo")) {
                     list[count++] = new ToDo(line.substring(4));
                     if(list[count-1].description.isBlank()){
-                        throw new emptyInputException();
+                        throw new EmptyInputException();
                     }
                     System.out.println("____________________________________________________________");
                     System.out.println("Got it. I've added this task:" + System.lineSeparator() + list[count - 1].toString());
@@ -50,17 +50,17 @@ public class Duke {
                     System.out.println("____________________________________________________________");
                 } else if (line.startsWith("deadline")) {
                     if(line.substring(8).isBlank()){
-                        throw new emptyInputException();
+                        throw new EmptyInputException();
                     }
                     String[] temp = line.split("/");
                     list[count++] = new Deadline(temp[0].substring(8), temp[1]);
                     System.out.println("____________________________________________________________");
                     System.out.println("Got it. I've added this task:" + System.lineSeparator() + list[count - 1].toString());
-                    System.out.println("Now you have     " + count + " tasks in your list.");
+                    System.out.println("Now you have " + count + " tasks in your list.");
                     System.out.println("____________________________________________________________");
                 } else if (line.startsWith("event")) {
                     if(line.substring(5).isBlank()){
-                        throw new emptyInputException();
+                        throw new EmptyInputException();
                     }
                     String[] temp = line.split("/");
                     list[count++] = new Event(temp[0].substring(5), temp[1]);
@@ -69,13 +69,13 @@ public class Duke {
                     System.out.println("Now you have " + count + " tasks in your list.");
                     System.out.println("____________________________________________________________");
                 } else {
-                    throw new unknownCommandException();
+                    throw new UnknownCommandException();
                 }
-            } catch(unknownCommandException e) {
+            } catch(UnknownCommandException e) {
                 System.out.println("____________________________________________________________");
                 System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 System.out.println("____________________________________________________________");
-            } catch(emptyInputException e) {
+            } catch(EmptyInputException e) {
                 System.out.println("____________________________________________________________");
                 System.out.println("☹ OOPS!!! The description of a todo/deadline/event cannot be empty.");
                 System.out.println("____________________________________________________________");

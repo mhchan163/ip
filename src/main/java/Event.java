@@ -10,7 +10,7 @@ public class Event extends Task{
     public String toString() {
         return "[E]" + super.toString() + " (by: " + by + ")";
     }
-    public String getStatusIcon() {
-        return super.getStatusIcon();
-    }
+    //public String getStatusIcon() {
+      //  return super.getStatusIcon();
+    //}
 }
