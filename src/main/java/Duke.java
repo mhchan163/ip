@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Duke {
 
@@ -15,8 +17,15 @@ public class Duke {
         System.out.println("____________________________________________________________");
     }
 
-    public static void main(String[] args) throws UnknownCommandException,EmptyInputException{
+    public static void main(String[] args) throws UnknownCommandException,EmptyInputException,java.io.IOException{
         printIntro();
+        File f = new File("data/Duke.txt");
+        if(f.exists()){
+            //retrive saved file
+            Scanner s = new Scanner(f);
+        } else {
+            f.createNewFile();
+        }
         Scanner in = new Scanner(System.in);
         Task[] list = new Task[100];
         int count=0;
