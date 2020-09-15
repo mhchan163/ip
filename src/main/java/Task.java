@@ -12,6 +12,7 @@ public class Task {
     }
 
     public String getTime(){
+        //returns nothing here cause there is no time component
         return "";
     }
 
