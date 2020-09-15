@@ -21,18 +21,40 @@ public class Duke {
 
     public static void main(String[] args) throws UnknownCommandException,EmptyInputException,java.io.IOException{
         printIntro();
+        Scanner in = new Scanner(System.in);
+        ArrayList<Task> list = new ArrayList<>();
+        int count=0;
+        //Task[] list = new Task[100];
+        String line;
         File f = new File("data/Duke.txt");
         if(f.exists()){
-            //retrive saved file
             Scanner s = new Scanner(f);
+            while(s.hasNext()){
+                String[] temp = s.nextLine().split("\\|");
+                if(temp[0].equals("[T] ")){
+                    list.add(new ToDo(temp[2]));
+                    count++;
+                    if(temp[1].equals(" [V] ")){
+                        list.get(count-1).markAsDone();
+                    }
+                } else if(temp[0].equals("[D] ")){
+                    list.add(new Deadline(temp[2], temp[3]));
+                    count++;
+                    if(temp[1].equals(" [V] ")) {
+                        list.get(count - 1).markAsDone();
+                    }
+                } else if(temp[0].equals("[E] ")){
+                    list.add(new Event(temp[2], temp[3]));
+                    count++;
+                    if(temp[1].equals(" [V] ")) {
+                        list.get(count - 1).markAsDone();
+                    }
+                }
+            }
         } else {
             f.createNewFile();
         }
-        Scanner in = new Scanner(System.in);
-        ArrayList<Task> list = new ArrayList<>();
-        //Task[] list = new Task[100];
-        int count=0;
-        String line;
+        FileWriter fw = new FileWriter(f);
         while(true) {
             try {
                 line = in.nextLine();
@@ -108,6 +130,10 @@ public class Duke {
         System.out.println("____________________________________________________________");
         System.out.println("Bye. Hope to see you again soon!");
         System.out.println("____________________________________________________________");
+        for(Task t : list){
+            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getTime() + System.lineSeparator());
+        }
+        fw.close();
     }
 }
 

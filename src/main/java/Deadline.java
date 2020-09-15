@@ -6,8 +6,18 @@ public class Deadline extends Task{
         this.by = by;
     }
 
+    public String getTime(){
+        return by;
+    }
+
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return taskCode() + super.toString() + " (by: " + by + ")";
     }
+
+    public String taskCode(){
+        return "[D]";
+    }
+
+
 }

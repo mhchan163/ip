@@ -7,8 +7,16 @@ public class Task {
         this.isDone = false;
     }
 
+    public String taskCode(){
+        return "";
+    }
+
+    public String getTime(){
+        return "";
+    }
+
     public String getStatusIcon() {
-        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
+        return (isDone ? "[V]" : "[X]"); //return tick or X symbols
     }
 
     public void markAsDone() {
@@ -18,6 +26,7 @@ public class Task {
     public String toString() {
         return getStatusIcon() +  description;
     }
+
 
 }
 

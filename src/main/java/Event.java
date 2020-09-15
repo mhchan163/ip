@@ -6,11 +6,17 @@ public class Event extends Task{
         this.by = by;
     }
 
+    public String getTime(){
+        return by;
+    }
+
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (by: " + by + ")";
+        return taskCode() + super.toString() + " (by: " + by + ")";
     }
-    //public String getStatusIcon() {
-      //  return super.getStatusIcon();
-    //}
+
+    public String taskCode(){
+        return "[E]";
+    }
+
 }
