@@ -29,7 +29,7 @@ public class Duke {
         System.out.println("____________________________________________________________");
     }
 
-    public static void processInputCommand() throws UnknownCommandException,EmptyInputException {
+    public static void processInputCommand() throws UnknownCommandException,EmptyInputException,IndexOutOfBoundsException,NoTimeInputException{
         Scanner in = new Scanner(System.in);
         String line;
         line = in.nextLine();
@@ -39,28 +39,38 @@ public class Duke {
         } else if (line.equals("list")) {
             System.out.println("____________________________________________________________");
             System.out.println("Here are the tasks in your list:");
-            for (int j = 0; j < count; j++) {
+            for (int j = 0; j < list.size(); j++) {
                 System.out.println(j + 1 + "." + list.get(j).toString());
             }
             System.out.println("____________________________________________________________");
+        } else if(line.startsWith("help")){
+            System.out.println("Here is the list of possible commands:"+ System.lineSeparator() + "todo" + System.lineSeparator() + "deadline" + System.lineSeparator() + "event" + System.lineSeparator() + "done" + System.lineSeparator() + "delete");
         } else if (line.startsWith("done")) {
-            String[] temp = line.split(" ");
-            int index = Integer.parseInt(temp[1]);
-            list.get(index - 1).markAsDone();
-            System.out.println("Nice! I've marked this as done:");
-            System.out.println(list.get(index - 1).toString());
-        } else if (line.startsWith("delete")) {
-            String[] temp = line.split(" ");
-            int index = Integer.parseInt(temp[1]);
-            System.out.println("Noted. I've removed this task:" + System.lineSeparator() + list.get(index - 1).toString());
-            list.remove(index - 1);
-            count--;
-        } else if (line.startsWith("todo")) {
-            list.add(new ToDo(line.substring(4)));
-            count++;
-            if (list.get(count - 1).description.isBlank()) {
+            if(line.substring(4).isBlank()){
                 throw new EmptyInputException();
             } else {
+                String[] temp = line.split(" ");
+                int index = Integer.parseInt(temp[1]);
+                list.get(index - 1).markAsDone();
+                System.out.println("Nice! I've marked this as done:");
+                System.out.println(list.get(index - 1).toString());
+            }
+        } else if (line.startsWith("delete")) {
+            if (line.substring(6).isBlank()) {
+                throw new EmptyInputException();
+            } else {
+                String[] temp = line.split(" ");
+                int index = Integer.parseInt(temp[1]);
+                System.out.println("Noted. I've removed this task:" + System.lineSeparator() + list.get(index - 1).toString());
+                list.remove(index - 1);
+                count--;
+            }
+        } else if (line.startsWith("todo")) {
+            if (line.substring(4).isBlank()) {
+                throw new EmptyInputException();
+            } else {
+                list.add(new ToDo(line.substring(4)));
+                count++;
                 System.out.println("____________________________________________________________");
                 System.out.println("Got it. I've added this task:" + System.lineSeparator() + list.get(count - 1).toString());
                 System.out.println("Now you have " + count + " tasks in your list.");
@@ -69,6 +79,8 @@ public class Duke {
         } else if (line.startsWith("deadline")) {
             if (line.substring(8).isBlank()) {
                 throw new EmptyInputException();
+            } else if(!line.contains("/")) {
+                throw new NoTimeInputException();
             } else {
                 String[] temp = line.split("/");
                 list.add(new Deadline(temp[0].substring(8), temp[1]));
@@ -81,6 +93,8 @@ public class Duke {
         } else if (line.startsWith("event")) {
             if (line.substring(5).isBlank()) {
                 throw new EmptyInputException();
+            } else if(!line.contains("/")) {
+                throw new NoTimeInputException();
             } else {
                 String[] temp = line.split("/");
                 list.add(new Event(temp[0].substring(5), temp[1]));
@@ -126,7 +140,7 @@ public class Duke {
     }
 
     public static void saveListData() throws java.io.IOException{
-        FileWriter fw = new FileWriter("data/Duke.txt");
+        FileWriter fw = new FileWriter("C:/Users/Chan Meng Han/IdeaProjects/Duke/src/main/java/data/Duke.txt");
         for(Task t : list){
             fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getTime() + System.lineSeparator());
         }
@@ -135,18 +149,28 @@ public class Duke {
 
     public static void main(String[] args) throws java.io.IOException{
         printIntro();
-        Scanner in = new Scanner(System.in);
-        uploadSavedData();
+        //uploadSavedData();
+        Storage storage = new Storage();
+        list = storage.load();
         while(isActive) {
             try {
                 processInputCommand();
             } catch (UnknownCommandException e) {
                 System.out.println("____________________________________________________________");
                 System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                System.out.println("type \"help\" for a list of possible commands");
                 System.out.println("____________________________________________________________");
             } catch (EmptyInputException e) {
                 System.out.println("____________________________________________________________");
                 System.out.println("☹ OOPS!!! The description of a todo/deadline/event cannot be empty.");
+                System.out.println("____________________________________________________________");
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("____________________________________________________________");
+                System.out.println("OOPS!!! You only have " + count + " tasks in your list.");
+                System.out.println("____________________________________________________________");
+            } catch (NoTimeInputException e) {
+                System.out.println("____________________________________________________________");
+                System.out.println("OOPS!!! deadline/event commands require a time input." + System.lineSeparator() + "e.g [task] /[time]" );
                 System.out.println("____________________________________________________________");
             }
         }
