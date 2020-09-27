@@ -1,13 +1,14 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Storage {
 
-    private File filePath;
+    private final File filePath;
 
-    public Storage(){
-        this.filePath = new File("C:/Users/Chan Meng Han/IdeaProjects/Duke/src/main/java/data/Duke.txt");
+    public Storage(String filePath){
+        this.filePath = new File(filePath);
     }
 
     public ArrayList<Task> load() throws java.io.IOException{
@@ -36,5 +37,13 @@ public class Storage {
                 }
             }
         return tasklist;
+    }
+
+    public void saveListData() throws java.io.IOException{
+        FileWriter fw = new FileWriter("data/Duke.txt");
+        for(Task t : Duke.list.tasklist){
+            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getTime() + System.lineSeparator());
+        }
+        fw.close();
     }
 }
