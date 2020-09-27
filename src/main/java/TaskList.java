@@ -93,5 +93,22 @@ public class TaskList {
         }
     }
 
+    public void SearchCommand(String text) throws DukeException{
+        int count = 0;
+        if(text.isBlank()){
+            throw new EmptyInputException();
+        } else {
+            for(Task t : tasklist) {
+                count++;
+                if(t.description.contains(text)){
+                    System.out.println("____________________________________________________________");
+                    System.out.println(count + "." + t.toString());
+                }
+            }
+            System.out.println("____________________________________________________________");
+        }
+    }
+
+
 
 }

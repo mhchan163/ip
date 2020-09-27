@@ -31,6 +31,9 @@ public class Parser {
             case "event":
                 Duke.list.EventCommand(text);
                 break;
+            case "search":
+                Duke.list.SearchCommand(text);
+                break;
             default:
                 throw new UnknownCommandException();
 
