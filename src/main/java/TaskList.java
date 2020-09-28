@@ -98,10 +98,11 @@ public class TaskList {
         if(text.isBlank()){
             throw new EmptyInputException();
         } else {
+            System.out.println("____________________________________________________________");
+            System.out.println("Here are the tasks with the key word: " + text);
             for(Task t : tasklist) {
                 count++;
                 if(t.description.contains(text)){
-                    System.out.println("____________________________________________________________");
                     System.out.println(count + "." + t.toString());
                 }
             }
