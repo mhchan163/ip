@@ -16,6 +16,10 @@ public class Task {
         return "";
     }
 
+    public String getDate(){
+        return "";
+    }
+
     public String getStatusIcon() {
         return (isDone ? "[V]" : "[X]"); //return tick or X symbols
     }
