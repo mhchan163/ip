@@ -19,7 +19,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    |____/ \__,_|_|\_\___|
    ```
 4.Use the help command to see the available commands.
-5.Refer to the Features section below for details of each command
+5.Refer to the Features section below for details of each command.
 
 
 ## Features
@@ -30,19 +30,18 @@ Words in capital letters are parameters to be supplied by users.
 ````
 
 
-Viewing help: `help`
+###Viewing help: `help`
 Show all the possible commands.
 
 Format: `help`
 
 
-
-Adding a "todo" task: `todo`
+###Adding a "todo" task: `todo`
 Adds a task to the list of task, involving only a description
 
 Format: `todo DESCRIPTION` 
 
-Adding a "Deadline" task: `deadline` 
+###Adding a "Deadline" task: `deadline` 
 Adds a deadline task to the list, involving a description and time input
 
 Format: `deadline DESCRIPTION /DATE TIME`
@@ -53,7 +52,7 @@ Time format is in 24-hrs, written as a single timing.
 Example: 
 `deadline`IP /20-09-20 1800
 
-Adding a "event" task: `event`
+###Adding a "event" task: `event`
 Adds an event task to the list, involving a description and time input
 
 Format: `event DESCRIPTION /DATE TIME`
@@ -66,7 +65,7 @@ Example:
 `add` Presentation /10-10-20 t/1200-1400
 
 
-Deleting a task: `delete`
+###Deleting a task: `delete`
 Deletes a specified task.
 
 Format: `delete INDEX`
@@ -76,7 +75,7 @@ delete 2
 Delete 2nd task in the list.
 
 
-Set a task as done: `done` 
+###Set a task as done: `done` 
 Sets a chosen tasks as done.
 
 Format: `done INDEX`
@@ -87,7 +86,7 @@ done 2
 Marks 2nd task in list as done
 
 
-Searching for tasks: `search`
+###Searching for tasks: `search`
 Search through the task list with given keyword(s) and display relevant tasks. The keyword can be multiple words 
 
 Format: `search KEYWORD`
@@ -97,7 +96,7 @@ search homework
 Find task(s) with a description that contains homework
 
 
-Exiting the program: `bye`
+###Exiting the program: `bye`
 Exits the app.
 
 Format: `bye`
