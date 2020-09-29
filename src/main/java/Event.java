@@ -34,6 +34,7 @@ public class Event extends Task{
 
 
     @Override
+
     public String toString() {
         return taskCode() + super.toString() + " (by: " + stringToDate(date).format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + " " + stringToTime(time).format(DateTimeFormatter.ofPattern("HH:mm a")) + ")";
     }

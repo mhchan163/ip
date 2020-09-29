@@ -19,6 +19,7 @@ public class Deadline extends Task{
         return LocalDate.parse(stringDate);
     }
 
+
     public static LocalTime stringToTime(String stringTime){
         int time = Integer.parseInt(stringTime);
         int hour = time/100;

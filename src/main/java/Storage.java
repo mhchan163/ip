@@ -11,6 +11,7 @@ public class Storage {
         this.filePath = new File(filePath);
     }
 
+
     public ArrayList<Task> load() throws java.io.IOException{
             Scanner s = new Scanner(filePath);
             int count = 0;
