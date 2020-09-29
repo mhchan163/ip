@@ -93,6 +93,7 @@ public class TaskList {
         }
     }
 
+
     public void SearchCommand(String text) throws DukeException{
         int count = 0;
         if(text.isBlank()){
@@ -109,5 +110,4 @@ public class TaskList {
             System.out.println("____________________________________________________________");
         }
     }
-    
 }
