@@ -1,3 +1,13 @@
+package main;
+
+import tasks.TaskList;
+import storage.Storage;
+import parser.Parser;
+import exception.DukeException;
+import exception.UnknownCommandException;
+import exception.EmptyInputException;
+import exception.NoTimeInputException;
+import ui.Ui;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -16,7 +26,7 @@ public class Duke {
             try {
                 Scanner in = new Scanner(System.in);
                 Parser commandChecker = new Parser();
-                commandChecker.parseCommand(in.nextLine());
+                commandChecker.parseCommand(in.nextLine(),list);
             } catch (UnknownCommandException e) {
                 System.out.println("____________________________________________________________");
                 System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -37,7 +47,7 @@ public class Duke {
             }
         }
         Ui.printOutro();
-        storage.saveListData();
+        storage.saveListData(list);
     }
 }
 

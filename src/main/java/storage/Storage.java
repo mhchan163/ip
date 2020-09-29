@@ -1,7 +1,14 @@
+package storage;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
+import tasks.TaskList;
+import tasks.Task;
+import tasks.Deadline;
+import tasks.Event;
+import tasks.ToDo;
 
 public class Storage {
 
@@ -40,10 +47,10 @@ public class Storage {
         return tasklist;
     }
 
-    public void saveListData() throws java.io.IOException{
+    public void saveListData(TaskList listData) throws java.io.IOException{
         FileWriter fw = new FileWriter("data/Duke.txt");
-        for(Task t : Duke.list.tasklist){
-            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getDate() + " " +  t.getTime() + System.lineSeparator());
+        for(Task t : listData.tasklist){
+            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.getDescription() + " | " + t.getDate() + " " +  t.getTime() + System.lineSeparator());
         }
         fw.close();
     }

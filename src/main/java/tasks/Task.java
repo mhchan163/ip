@@ -1,3 +1,5 @@
+package tasks;
+
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -9,6 +11,10 @@ public class Task {
 
     public String taskCode(){
         return "";
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getTime(){

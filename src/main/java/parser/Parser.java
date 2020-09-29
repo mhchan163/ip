@@ -1,6 +1,12 @@
+package parser;
+
+import exception.DukeException;
+import exception.UnknownCommandException;
+import tasks.TaskList;
+
 public class Parser {
 
-    public void parseCommand(String userInput) throws DukeException{
+    public void parseCommand(String userInput, TaskList listData) throws DukeException{
         String[] words = userInput.trim().split(" ", 2);
 
         final String command = words[0];
@@ -8,31 +14,31 @@ public class Parser {
 
         switch (command) {
             case "bye":
-                Duke.list.ByeCommand();
+                listData.ByeCommand();
                 break;
             case "list":
-                Duke.list.ListCommand();
+                listData.ListCommand();
                 break;
             case "done":
-                Duke.list.DoneCommand(text);
+                listData.DoneCommand(text);
                 break;
             case "delete":
-                Duke.list.DeleteCommand(text);
+                listData.DeleteCommand(text);
                 break;
             case "help":
-                Duke.list.HelpCommand();
+                listData.HelpCommand();
                 break;
             case "todo":
-                Duke.list.ToDoCommand(text);
+                listData.ToDoCommand(text);
                 break;
             case "deadline":
-                Duke.list.DeadlineCommand(text);
+                listData.DeadlineCommand(text);
                 break;
             case "event":
-                Duke.list.EventCommand(text);
+                listData.EventCommand(text);
                 break;
             case "search":
-                Duke.list.SearchCommand(text);
+                listData.SearchCommand(text);
                 break;
             default:
                 throw new UnknownCommandException();
