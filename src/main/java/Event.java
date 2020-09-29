@@ -2,6 +2,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
 
+/**
+ * Event is a type of task that includes a time input in addition to
+ * the string description.
+ */
 public class Event extends Task{
     protected String date;
     protected String time;
@@ -34,7 +38,11 @@ public class Event extends Task{
 
 
     @Override
-
+    /**
+     *Returns the taskCode, description, date and time of the task combined into a string
+     *@param none
+     *@return String
+     */
     public String toString() {
         return taskCode() + super.toString() + " (by: " + stringToDate(date).format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + " " + stringToTime(time).format(DateTimeFormatter.ofPattern("HH:mm a")) + ")";
     }

@@ -4,6 +4,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 
+/**
+ * Deadline is a type of task that involves a time input in addition to
+ * the string description.
+ */
 public class Deadline extends Task{
     protected String date;
     protected String time;
@@ -36,6 +40,11 @@ public class Deadline extends Task{
     }
 
     @Override
+    /**
+     *Returns the taskCode, description, date and time of the task combined into a string
+     *@param none
+     *@return String
+     */
     public String toString() {
         return taskCode() + super.toString() + " (by: " + stringToDate(date).format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + " " + stringToTime(time).format(DateTimeFormatter.ofPattern("HH:mm a")) + ")";
 
