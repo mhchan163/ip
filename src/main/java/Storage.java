@@ -15,6 +15,7 @@ public class Storage {
         this.filePath = new File(filePath);
     }
 
+
     /**
      * Loads the data from save file "Duke.txt" into the an ArrayList object
      * @return the ArrayList object with the save file data added
@@ -54,7 +55,7 @@ public class Storage {
     public void saveListData() throws java.io.IOException{
         FileWriter fw = new FileWriter("data/Duke.txt");
         for(Task t : Duke.list.tasklist){
-            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getTime() + System.lineSeparator());
+            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getDate() + " " +  t.getTime() + System.lineSeparator());
         }
         fw.close();
     }
