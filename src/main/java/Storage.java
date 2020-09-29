@@ -11,6 +11,7 @@ public class Storage {
         this.filePath = new File(filePath);
     }
 
+
     public ArrayList<Task> load() throws java.io.IOException{
             Scanner s = new Scanner(filePath);
             int count = 0;
@@ -42,7 +43,7 @@ public class Storage {
     public void saveListData() throws java.io.IOException{
         FileWriter fw = new FileWriter("data/Duke.txt");
         for(Task t : Duke.list.tasklist){
-            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getTime() + System.lineSeparator());
+            fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.description + " | " + t.getDate() + " " +  t.getTime() + System.lineSeparator());
         }
         fw.close();
     }
