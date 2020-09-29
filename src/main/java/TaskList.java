@@ -1,3 +1,9 @@
+/**
+ * Creates an ArrayList of type Task to store Task objects and
+ * handles the various operations such as add,delete,list,exit,
+ * and done.
+ */
+
 import java.util.ArrayList;
 
 public class TaskList {

@@ -1,5 +1,7 @@
+/**
+ * User Interface class that deals with interactions with the user.
+ */
 public class Ui {
-
 
     public static void printIntro(){
         String logo = " ____        _        \n"
