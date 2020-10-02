@@ -3,8 +3,8 @@ package commands;
 import exception.DukeException;
 import exception.EmptyInputException;
 import exception.NoTimeInputException;
-import tasks.Deadline;
 import tasks.TaskList;
+import tasks.Event;
 import storage.Storage;
 import ui.Ui;
 
@@ -22,7 +22,7 @@ public class EventCommand extends Command {
                 throw new NoTimeInputException();
             } else {
                 String[] temp = description.split("/");
-                list.tasklist.add(new Deadline(temp[0], temp[1]));
+                list.tasklist.add(new Event(temp[0], temp[1]));
                 Ui.printTaskAddedMessage(list);
                 Storage.saveListData(list);
             }

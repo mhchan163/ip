@@ -1,6 +1,7 @@
 package tasks;
 
 import exception.DukeException;
+import exception.WrongDeadlineDateFormatException;
 import storage.Storage;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,7 +15,7 @@ public class Deadline extends Task{
     public Deadline(String description, String dateTimeInput)throws DukeException {
         super(description);
         if(!dateTimeInput.contains("-")){
-            throw new WrongDateFormatException();
+            throw new WrongDeadlineDateFormatException();
         } else {
             String[] temp = dateTimeInput.trim().split(" ");
             date = temp[0];

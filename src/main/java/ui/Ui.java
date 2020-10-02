@@ -55,10 +55,17 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
-    public static void printWrongDateFormatMessage(){
+    public static void printWrongDeadlineDateFormatMessage(){
         System.out.println("____________________________________________________________");
         System.out.println("OOPS!!! The date was written in an incorrect Format." + System.lineSeparator() + "Please follow the format given below: " +
                 System.lineSeparator() + "/YYYY-MM-DD HHmm(24 hour format)");
+        System.out.println("____________________________________________________________");
+    }
+
+    public static void printEventDateFormatMessage(){
+        System.out.println("____________________________________________________________");
+        System.out.println("OOPS!!! The date was written in an incorrect Format." + System.lineSeparator() + "Please follow the format given below: " +
+                System.lineSeparator() + "/YYYY-MM-DD HHmm-HHmm(24 hour format)");
         System.out.println("____________________________________________________________");
     }
 

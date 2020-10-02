@@ -7,7 +7,8 @@ import exception.DukeException;
 import exception.UnknownCommandException;
 import exception.EmptyInputException;
 import exception.NoTimeInputException;
-import tasks.WrongDateFormatException;
+import exception.WrongDeadlineDateFormatException;
+import exception.WrongEventDateFormatException;
 import ui.Ui;
 import java.io.IOException;
 import java.util.Scanner;
@@ -38,8 +39,10 @@ public class Duke {
                 Ui.printIndexOutOfBoundsMessage(list);
             } catch (NoTimeInputException e) {
                 Ui.printNoTimeInputMessage();
-            } catch (WrongDateFormatException e){
-                Ui.printWrongDateFormatMessage();
+            } catch (WrongDeadlineDateFormatException e){
+                Ui.printWrongDeadlineDateFormatMessage();
+            } catch (WrongEventDateFormatException e){
+                Ui.printEventDateFormatMessage();
             }
         }
     }

@@ -1,6 +1,6 @@
-package tasks;
+package exception;
 
 import exception.DukeException;
 
-public class WrongDateFormatException extends DukeException {
+public class WrongDeadlineDateFormatException extends DukeException {
 }
