@@ -18,9 +18,9 @@ public class DeleteCommand extends Command {
                 throw new EmptyInputException();
             } else {
                 int index = Integer.parseInt(text);
-                list.tasklist.get(index - 1).markAsDone();
-                System.out.println("Nice! I've marked this as done:");
-                System.out.println(list.tasklist.get(index - 1).toString());
+                System.out.println("Noted. I've removed this task:" + System.lineSeparator() + list.tasklist.get(index - 1).toString());
+                System.out.println("You now have " + (list.tasklist.size()-1) + " tasks in your list");
+                list.tasklist.remove(index - 1);
             }
             Storage.saveListData(list);
         }

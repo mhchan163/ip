@@ -49,7 +49,7 @@ public class Duke {
                 System.out.println("____________________________________________________________");
             } catch (WrongDateFormatException e){
                 System.out.println("____________________________________________________________");
-                System.out.println("OOPS!!! The date was written in a incorrect Format." + System.lineSeparator() + "Please follow the format given below: " +
+                System.out.println("OOPS!!! The date was written in an incorrect Format." + System.lineSeparator() + "Please follow the format given below: " +
                         System.lineSeparator() + "/YYYY-MM-DD HHmm(24 hour format)");
                 System.out.println("____________________________________________________________");
             }

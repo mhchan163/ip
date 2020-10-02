@@ -13,7 +13,7 @@ public class Deadline extends Task{
 
     public Deadline(String description, String dateTimeInput)throws DukeException {
         super(description);
-        if(!dateTimeInput.contains("-")&&!dateTimeInput.contains("/")){
+        if(!dateTimeInput.contains("-")){
             throw new WrongDateFormatException();
         } else {
             String[] temp = dateTimeInput.trim().split(" ");
@@ -23,12 +23,7 @@ public class Deadline extends Task{
     }
 
     public static LocalDate stringToDate(String stringDate) {
-        if (stringDate.trim().contains("/")) {
-            String reformattedDate = stringDate.replaceAll("/", "-");
-            return LocalDate.parse(reformattedDate);
-        } else {
             return LocalDate.parse(stringDate);
-        }
     }
 
 

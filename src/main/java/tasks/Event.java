@@ -12,7 +12,8 @@ public class Event extends Task{
 
     public Event(String description, String dateTimeInput) throws DukeException {
         super(description);
-        if(!dateTimeInput.contains("-")&&!dateTimeInput.contains("/")){
+        System.out.println(dateTimeInput);
+        if(!dateTimeInput.contains("-")){
             throw new WrongDateFormatException();
         } else {
             String[] temp = dateTimeInput.trim().split(" ");
@@ -22,12 +23,7 @@ public class Event extends Task{
     }
 
     public static LocalDate stringToDate(String stringDate) {
-        if (stringDate.trim().contains("/")) {
-            String reformattedDate = stringDate.replaceAll("/", "-");
-            return LocalDate.parse(reformattedDate);
-        } else {
             return LocalDate.parse(stringDate);
-        }
     }
 
 
