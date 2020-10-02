@@ -6,6 +6,10 @@ import storage.Storage;
 import tasks.TaskList;
 import ui.Ui;
 
+/**
+ * This class deletes a selected task, and saves the data after
+ * its operation.
+ */
 public class DeleteCommand extends Command {
 
         private final String text;

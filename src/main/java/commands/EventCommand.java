@@ -8,6 +8,10 @@ import tasks.Event;
 import storage.Storage;
 import ui.Ui;
 
+/**
+ * This class creates a new event task when executed. Data is
+ * saved after the task is added.
+ */
 public class EventCommand extends Command {
         private final String description;
 

@@ -1,5 +1,9 @@
 
 package commands;
+/**
+ * the command class consists of the different possible commands
+ * that the user can input, and excutes the given command.
+ */
 
 import tasks.TaskList;
 import exception.DukeException;

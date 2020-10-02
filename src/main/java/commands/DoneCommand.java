@@ -6,7 +6,9 @@ import exception.DukeException;
 import exception.EmptyInputException;
 import ui.Ui;
 
-
+/**
+ * This class marks a selected task as done.
+ */
 public class DoneCommand extends Command {
     private final String text;
 

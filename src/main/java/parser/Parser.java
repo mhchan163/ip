@@ -13,9 +13,20 @@ import commands.TodoCommand;
 import commands.HelpCommand;
 import commands.ListCommand;
 
-
+/**
+ * Deals with the user input command by checking if it
+ * corresponds to available commands.
+ */
 public class Parser {
 
+    /**
+     * Splits up the given user input into the command
+     * and the task description and calls the method
+     * depending on the command input.
+     * @param userInput
+     * @throws DukeException
+     * @returns an object of type command corresponding to the input
+     */
     public static Command parseCommand(String userInput) throws DukeException{
         String[] words = userInput.trim().split(" ", 2);
 

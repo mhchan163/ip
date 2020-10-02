@@ -9,6 +9,10 @@ import ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * This class creates a new event task when executed. Data is
+ * saved after the task is added.
+ */
 public class TodoCommand extends Command {
 
     private final String description;

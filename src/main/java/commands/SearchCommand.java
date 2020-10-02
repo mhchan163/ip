@@ -1,11 +1,14 @@
 package commands;
 
-import commands.Command;
 import exception.DukeException;
 import exception.EmptyInputException;
 import tasks.Task;
 import tasks.TaskList;
 
+/**
+ * This class searches through the list of tasks
+ * for a specific keyword input by the user.
+ */
 public class SearchCommand extends Command {
     public final String keyword;
 

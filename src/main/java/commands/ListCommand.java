@@ -2,6 +2,10 @@ package commands;
 
 import tasks.TaskList;
 
+/**
+ * This class prints out the list of tasks input
+ * by the user at the time of the command.
+ */
 public class ListCommand extends Command {
 
     public void execute(TaskList list) {

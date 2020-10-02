@@ -8,6 +8,10 @@ import tasks.Deadline;
 import tasks.TaskList;
 import ui.Ui;
 
+/**
+ * This class creates a new deadline task when executed. Data is
+ * saved after the task is added.
+ */
 public class DeadlineCommand extends Command {
     private final String description;
 

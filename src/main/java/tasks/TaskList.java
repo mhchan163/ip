@@ -1,5 +1,10 @@
 package tasks;
 
+/**
+ * This class creates an ArrayList of type Task
+ * to store the input tasks from the user.
+ */
+
 import java.util.ArrayList;
 
 public class TaskList {
