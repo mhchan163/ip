@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
+
+import exception.DukeException;
 import tasks.TaskList;
 import tasks.Task;
 import tasks.Deadline;
@@ -19,7 +21,7 @@ public class Storage {
     }
 
 
-    public ArrayList<Task> load() throws java.io.IOException{
+    public ArrayList<Task> load() throws java.io.IOException, DukeException {
             Scanner s = new Scanner(filePath);
             int count = 0;
             ArrayList<Task> tasklist = new ArrayList<>();
@@ -47,7 +49,7 @@ public class Storage {
         return tasklist;
     }
 
-    public void saveListData(TaskList listData) throws java.io.IOException{
+    public static void saveListData(TaskList listData) throws java.io.IOException{
         FileWriter fw = new FileWriter("data/Duke.txt");
         for(Task t : listData.tasklist){
             fw.write(t.taskCode() + " | " + t.getStatusIcon()+ " | " + t.getDescription() + " | " + t.getDate() + " " +  t.getTime() + System.lineSeparator());

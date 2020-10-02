@@ -1,12 +1,22 @@
 package parser;
 
+import commands.DeadlineCommand;
 import exception.DukeException;
 import exception.UnknownCommandException;
-import tasks.TaskList;
+import commands.Command;
+import commands.ByeCommand;
+import commands.SearchCommand;
+import commands.DeleteCommand;
+import commands.DoneCommand;
+import commands.EventCommand;
+import commands.TodoCommand;
+import commands.HelpCommand;
+import commands.ListCommand;
+
 
 public class Parser {
 
-    public void parseCommand(String userInput, TaskList listData) throws DukeException{
+    public static Command parseCommand(String userInput) throws DukeException{
         String[] words = userInput.trim().split(" ", 2);
 
         final String command = words[0];
@@ -14,32 +24,23 @@ public class Parser {
 
         switch (command) {
             case "bye":
-                listData.ByeCommand();
-                break;
+                return new ByeCommand();
             case "list":
-                listData.ListCommand();
-                break;
+                return new ListCommand();
             case "done":
-                listData.DoneCommand(text);
-                break;
+                return new DoneCommand(text);
             case "delete":
-                listData.DeleteCommand(text);
-                break;
+                return new DeleteCommand(text);
             case "help":
-                listData.HelpCommand();
-                break;
+                return new HelpCommand();
             case "todo":
-                listData.ToDoCommand(text);
-                break;
+                return new TodoCommand(text);
             case "deadline":
-                listData.DeadlineCommand(text);
-                break;
+                return new DeadlineCommand(text);
             case "event":
-                listData.EventCommand(text);
-                break;
+                return new EventCommand(text);
             case "search":
-                listData.SearchCommand(text);
-                break;
+                return new SearchCommand(text);
             default:
                 throw new UnknownCommandException();
 
