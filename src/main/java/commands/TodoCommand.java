@@ -5,6 +5,7 @@ import exception.EmptyInputException;
 import storage.Storage;
 import tasks.ToDo;
 import tasks.TaskList;
+import ui.Ui;
 
 import java.io.IOException;
 
@@ -21,10 +22,7 @@ public class TodoCommand extends Command {
             throw new EmptyInputException();
         } else {
             list.tasklist.add(new ToDo(description));
-            System.out.println("____________________________________________________________");
-            System.out.println("Got it. I've added this task:" + System.lineSeparator() + list.tasklist.get(list.tasklist.size()-1).toString());
-            System.out.println("Now you have " + list.tasklist.size() + " tasks in your list.");
-            System.out.println("____________________________________________________________");
+            Ui.printTaskAddedMessage(list);
             Storage.saveListData(list);
         }
     }

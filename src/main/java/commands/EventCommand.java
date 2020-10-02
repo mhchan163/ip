@@ -6,6 +6,7 @@ import exception.NoTimeInputException;
 import tasks.Deadline;
 import tasks.TaskList;
 import storage.Storage;
+import ui.Ui;
 
 public class EventCommand extends Command {
         private final String description;
@@ -22,10 +23,7 @@ public class EventCommand extends Command {
             } else {
                 String[] temp = description.split("/");
                 list.tasklist.add(new Deadline(temp[0], temp[1]));
-                System.out.println("____________________________________________________________");
-                System.out.println("Got it. I've added this task:" + System.lineSeparator() + list.tasklist.get(list.tasklist.size() - 1).toString());
-                System.out.println("Now you have " + list.tasklist.size() + " tasks in your list.");
-                System.out.println("____________________________________________________________");
+                Ui.printTaskAddedMessage(list);
                 Storage.saveListData(list);
             }
         }

@@ -4,6 +4,7 @@ import storage.Storage;
 import tasks.TaskList;
 import exception.DukeException;
 import exception.EmptyInputException;
+import ui.Ui;
 
 
 public class DoneCommand extends Command {
@@ -19,8 +20,7 @@ public class DoneCommand extends Command {
         } else {
             int index = Integer.parseInt(text);
             list.tasklist.get(index - 1).markAsDone();
-            System.out.println("Nice! I've marked this as done:");
-            System.out.println(list.tasklist.get(index - 1).toString());
+            Ui.printTaskDoneMessage(list,index);
         }
         Storage.saveListData(list);
     }

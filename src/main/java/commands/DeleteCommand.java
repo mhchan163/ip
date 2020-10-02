@@ -4,6 +4,7 @@ import exception.DukeException;
 import exception.EmptyInputException;
 import storage.Storage;
 import tasks.TaskList;
+import ui.Ui;
 
 public class DeleteCommand extends Command {
 
@@ -18,8 +19,7 @@ public class DeleteCommand extends Command {
                 throw new EmptyInputException();
             } else {
                 int index = Integer.parseInt(text);
-                System.out.println("Noted. I've removed this task:" + System.lineSeparator() + list.tasklist.get(index - 1).toString());
-                System.out.println("You now have " + (list.tasklist.size()-1) + " tasks in your list");
+                Ui.printTaskDeletedMessage(list,index);
                 list.tasklist.remove(index - 1);
             }
             Storage.saveListData(list);

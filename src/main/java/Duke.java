@@ -31,31 +31,17 @@ public class Duke {
                    isActive = false;
                 }
             } catch (UnknownCommandException e) {
-                System.out.println("____________________________________________________________");
-                System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
-                System.out.println("type \"help\" for a list of possible commands");
-                System.out.println("____________________________________________________________");
+                Ui.printUnknownCommandMessage();
             } catch (EmptyInputException e) {
-                System.out.println("____________________________________________________________");
-                System.out.println("☹ OOPS!!! The description of a todo/deadline/event cannot be empty.");
-                System.out.println("____________________________________________________________");
+                Ui.printEmptyInputMessage();
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("____________________________________________________________");
-                System.out.println("OOPS!!! You only have " + list.tasklist.size() + " tasks in your list.");
-                System.out.println("____________________________________________________________");
+                Ui.printIndexOutOfBoundsMessage(list);
             } catch (NoTimeInputException e) {
-                System.out.println("____________________________________________________________");
-                System.out.println("OOPS!!! deadline/event commands require a time input." + System.lineSeparator() + "e.g [task] /[time]" );
-                System.out.println("____________________________________________________________");
+                Ui.printNoTimeInputMessage();
             } catch (WrongDateFormatException e){
-                System.out.println("____________________________________________________________");
-                System.out.println("OOPS!!! The date was written in an incorrect Format." + System.lineSeparator() + "Please follow the format given below: " +
-                        System.lineSeparator() + "/YYYY-MM-DD HHmm(24 hour format)");
-                System.out.println("____________________________________________________________");
+                Ui.printWrongDateFormatMessage();
             }
         }
-        Ui.printOutro();
-        storage.saveListData(list);
     }
 }
 
