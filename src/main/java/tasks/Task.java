@@ -1,5 +1,6 @@
 package tasks;
 
+
 /**
  * The Task class represents the different type of tasks
  * the user can input into the Duke program.
