@@ -21,7 +21,7 @@ public class Storage {
     private final File filePath;
 
     public Storage(String filePath){
-        this.filePath = new File(filePath);
+            this.filePath = new File(filePath);
     }
 
     /**
@@ -30,6 +30,10 @@ public class Storage {
      * @throws java.io.IOException
      */
     public ArrayList<Task> load() throws java.io.IOException, DukeException {
+            if(!filePath.exists()){
+                createDirectory();
+                filePath.createNewFile();
+            }
             Scanner s = new Scanner(filePath);
             int count = 0;
             ArrayList<Task> tasklist = new ArrayList<>();
@@ -55,6 +59,15 @@ public class Storage {
                 }
             }
         return tasklist;
+    }
+
+    private static boolean createDirectory() throws java.io.IOException{
+        File directory = new File("data");
+        boolean isDirectory = false;
+        if(!directory.exists()) {
+            isDirectory = directory.mkdir();
+        }
+        return isDirectory;
     }
 
     /**
